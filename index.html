@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N3Vision AB | ERP & Payment Integrations</title>
+    <meta name="description" content="Seamlessly integrate Payment Service Providers with Microsoft Dynamics 365 Business Central." />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                200: '#bae6fd',
+                300: '#7dd3fc',
+                400: '#38bdf8',
+                500: '#0ea5e9',
+                600: '#0284c7', // Brand Blue
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+                950: '#082f49',
+              },
+              secondary: {
+                500: '#8b5cf6',
+                600: '#7c3aed', // Brand Purple
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+
+    <style type="text/tailwindcss">
+      @layer base {
+        body { @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300; }
+      }
+      @layer components {
+        .gradient-text {
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-500;
+        }
+        .glass {
+          @apply bg-white/5 backdrop-blur-md border border-white/10;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>
