@@ -74,16 +74,6 @@ export const Contact: React.FC = () => {
                   <p className="text-slate-600 dark:text-slate-400">info@n3vis.com</p>
                 </div>
               </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white">Phone</h3>
-                  <p className="text-slate-600 dark:text-slate-400">+46 72-231 42 26</p>
-                </div>
-              </div>
 
                <div className="flex items-start space-x-4">
                 <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-lg">
