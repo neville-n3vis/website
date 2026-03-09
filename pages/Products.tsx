@@ -80,7 +80,7 @@ const products = [
     description: "Direct connectivity to 40+ global Payment Service Providers for seamless ERP synchronization.",
     longDescription: "Our Global PSP Integration engine provides the necessary connectivity to ensure your ERP is never isolated from your payment data, regardless of which provider you choose.",
     features: [
-      "Core Function: PSP Connect integrates multiple Payment Service Providers (PSPs) directly with Business Central (BC).",
+      "Core Function: PSP Connect streamlines global payments by integrating multiple Payment Service Providers (PSPs) directly into Microsoft Dynamics 365 Business Central and Finance & Operations, automating the end-to-end Order-to-Cash process.",
       "Solution Scope: Provides an end-to-end automated solution for the entire Order-to-Cash process.",
       "Currently Supported Providers: Adyen, AfterPay, Avarda, Briqpay, CDON, Computop, Klarna, Nets, PayPal, PayEx, Qliro, Shopify, Stripe, Svea, Swish, Vipps, Walley, and more."
     ],
@@ -114,7 +114,7 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
         {products.map((product, index) => (
           <AnimatedSection key={product.id} delay={index * 100}>
             <div 
-              onClick={() => setSelectedProduct(product)}
+              onClick={() => { window.scrollTo(0, 0); setTimeout(() => setSelectedProduct(product), 50); }}
               className="group flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-pointer active:scale-[0.98]"
             >
                <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
@@ -199,9 +199,9 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
 
       {/* 5. Modal Overlay */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[99999] flex items-start justify-center p-4 pt-6 overflow-y-auto">
           <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setSelectedProduct(null)}></div>
-          <div className="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden relative border border-slate-200 dark:border-slate-800 z-[100000] animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden relative border border-slate-200 dark:border-slate-800 z-[100000] animate-in zoom-in-95 duration-200">
             <button onClick={() => setSelectedProduct(null)} className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white z-20 transition-colors">
               <X className="w-6 h-6" />
             </button>
