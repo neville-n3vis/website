@@ -4,6 +4,6 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/(.*)", "destination": "/index.html" },
     { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/terms", "destination": "/sitemap.xml" },
+    { "source": "/sitemap", "destination": "/sitemap.xml" },
   ]
 }
