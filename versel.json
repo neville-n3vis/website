@@ -2,7 +2,8 @@
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" },
     { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/terms", "destination": "/sitemap.xml" },
   ]
 }
