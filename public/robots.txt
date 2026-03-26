@@ -1,12 +1,7 @@
-import type { MetadataRoute } from 'next'
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
 
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/admin/', '/dashboard/'], // Block these from search results
-    },
-    sitemap: 'https://www.n3vis.com/sitemap.xml',
-  }
-}
+Sitemap: https://n3vis.com/sitemap.xml
