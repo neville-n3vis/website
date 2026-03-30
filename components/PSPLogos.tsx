@@ -63,8 +63,10 @@ export const PSP_PARTNERS = [
   { id: 'p42', name: 'Ahlens', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768750836/A%CC%8Ahle%CC%81ns-Logo.svg_zwnhuf.png" },
   { id: 'p43', name: 'Sello', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768750832/31cxnht4JoL_n1ud7w.png" },
   { id: 'p44', name: 'onpay', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1764669841/onpay-logo_avfsyn.png" },
-  { id: 'p45', name: 'two', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768750999/two_2_vragv3.png" },
-  { id: 'p46', name: 'The Market', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768750840/TheMarket-logo.svg_2_dwrjwb.png" }
+  { id: 'p46', name: 'The Market', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768750840/TheMarket-logo.svg_2_dwrjwb.png" },
+  { id: 'p50', name: 'Checkout', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773862329/checkout_rgv414.png" },
+  { id: 'p51', name: 'Checkout', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1774862993/Billie_Colour_bydvd9.png" }
+
 ];
 
 export const STRATEGIC_PARTNERS = [
@@ -93,12 +95,21 @@ export const STRATEGIC_PARTNERS = [
   { id: 'sp23', name: 'MartIT', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768898657/martit_logo_2022_edited-removebg-preview_nefgzs.png" },
   { id: 'sp24', name: 'CodeUnit', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768747802/Picture_6_1_jetzrq.png" },
   { id: 'sp25', name: 'YouSign', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768898752/Picture_9_edited-removebg-preview_j2f1pt.png" },
-  { id: 'sp26', name: 'NaviPro', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768748039/Picture_10_1_y9ecwf.png" },
+  { id: 'sp26', name: 'Evidi', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773863770/Evidi_ngf1ed.png" },
   { id: 'sp29', name: 'FellowMind', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768748245/Picture_13_1_mzlmkn.png" },
   { id: 'sp30', name: 'BrightCom', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768755195/brightcom-logo_h6lxm0.svg" },
   { id: 'sp31', name: 'Auzilium', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768755289/auzilium_web_np45v0.webp" },
   { id: 'sp32', name: 'Avarda', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768741927/filters_format_webp_wesu8l.webp" },
-  { id: 'sp32', name: 'Business Applications', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768758841/Business_Applications_grey_1000t_msmqse_edited_v8apd1.png" },
-  { id: 'sp33', name: 'Oteria', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768758532/oteria-white_edited_raupmv.png"},
+  { id: 'sp33', name: 'Business Applications', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768758841/Business_Applications_grey_1000t_msmqse_edited_v8apd1.png" },
+  { id: 'sp34', name: 'Oteria', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768758532/oteria-white_edited_raupmv.png"},
+  { id: 'sp45', name: 'Finqr', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773146668/finqr_bagkqx.png" },
+  { id: 'sp48', name: 'QA Associates', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773146709/QA2_fq8a4p.png" },
+  { id: 'sp49', name: 'Innova', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773146946/innova-logo-white_z7xxuk.svg" },
+  { id: 'sp50', name: 'two', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1768750999/two_2_vragv3.png" },
+  { id: 'sp51', name: 'navet', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773863770/Navet_p1of6m.png" },
+  { id: 'sp52', name: 'navet', logo: "https://res.cloudinary.com/dut2qdf5z/image/upload/v1773907486/brainaccounting_pr6fpa.webp" },
+  
+  
+  
 
 ];
