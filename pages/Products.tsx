@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { 
   CreditCard, Settings, ShoppingCart, X, CheckCircle2, ArrowRight,
-  Zap, Target, Eye, Rocket, ShieldAlert, BarChart3, Database, Building2, Calendar, Globe, FileWarning
+  Zap, Target, Eye, Rocket, ShieldAlert, BarChart3, Database, Building2, Calendar, Globe,
+  Gift, Receipt, Monitor
 } from 'lucide-react';
 import { PageView } from '../types';
 
@@ -89,24 +90,63 @@ const products = [
   },
   {
     id: 5,
-    title: "PS Inkasso Connect",
+    title: "Gift Card Connect",
     compatibility: [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
     ],
-    description: "Automate debt collection in Business Central. Send unpaid invoices and track updates — no file exports or middleware required.",
-    longDescription: "PS Inkasso Connect enables a seamless, real-time integration between Microsoft Dynamics 365 Business Central and PS Inkasso's services. Finance teams can submit cases, track updates, and receive payments — all without leaving Business Central. No middleware, no manual exports, no chasing external reports.",
+    description: "End-to-end Gift Card management for Business Central. Integrates multiple providers including AwardIT/Retain24 and Gifted.",
+    longDescription: "Gift Card Connect bridges Business Central with leading Gift Card Service Providers, delivering a fully automated Order-to-Cash experience. Whether transactions originate online or in-store, the app handles the full gift card lifecycle — from activation through redemption — with smart refund prioritisation when used alongside PSP Connect.",
     features: [
-      "One-Click Submission: Send unpaid invoices directly from the customer ledger to PS Inkasso using integrated actions.",
-      "Live Case Status Updates: View real-time case status, suggestions, payment info, and close dates directly in Business Central.",
-      "Automated Payment Posting: Payments and credit memos from PS Inkasso are posted automatically in BC, marked for follow-up.",
-      "Full Reminder & Collection Workflow: Supports invoice service, payment reminders, and debt collection directly via PS Inkasso.",
-      "Fakturaservice Support: Let PS Inkasso send invoices — with confirmation and links logged in Business Central.",
-      "Data Compliance: Only relevant invoice and customer data is shared (e.g. due date, amounts, interest, and contact info).",
-      "No Middleware Required: Everything runs inside Business Central using standard setup and secure web service communication.",
-      "Currency Account Support: Supports separate journals per currency for accurate reconciliation of incoming payments."
+      "Create, update, cancel, activate and redeem gift cards directly from within Business Central.",
+      "Handles gift card transactions from ecommerce sites as well as in-store POS purchases.",
+      "Supports multiple gift card payments on a single Sales Order, as full or partial payment.",
+      "Works in tandem with PSP Connect to let users prioritise refund order across payment methods (e.g. refund gift card before PSP).",
+      "Connects to multiple Gift Card Providers including AwardIT/Retain24 and Gifted.",
+      "Quick and easy Assisted Wizard setup.",
+      "Supports Essentials and Premium Editions across 25+ countries."
     ],
-    icon: <FileWarning className="w-8 h-8 text-white" />,
-    color: "from-rose-500 to-red-600"
+    icon: <Gift className="w-8 h-8 text-white" />,
+    color: "from-rose-500 to-pink-500"
+  },
+  {
+    id: 7,
+    title: "Terminal Connect",
+    compatibility: [
+      { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
+    ],
+    description: "Initiate payments from a BC Sales Order directly to a physical payment terminal. Real-time transaction sync, refunds, and automatic order matching — no manual entry required.",
+    longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Order, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale. Compatible with any PSP and any terminal hardware.",
+    features: [
+      "One-click payment initiation from any BC Sales Order direct to a physical payment terminal.",
+      "Real-time transaction response received back into BC — approved, declined, or cancelled.",
+      "Automatic linking of the terminal payment to the originating Sales Order or Invoice in BC.",
+      "Refund handling initiated from within BC and executed directly on the terminal.",
+      "Works through your existing PSP connection — no additional payment contracts required.",
+      "Supports split and partial payments across terminal and other payment methods.",
+      "Full audit trail of all terminal transactions stored against the BC document.",
+      "PSP Agnostic: works with any PSP including Adyen, Nets, Stripe, Swish, and more.",
+      "Hardware Agnostic: compatible with any terminal hardware supported by your PSP."
+    ],
+    icon: <Monitor className="w-8 h-8 text-white" />,
+    color: "from-cyan-500 to-blue-600"
+  },
+  {
+    id: 6,
+    title: "Multi-VAT",
+    compatibility: [
+      { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
+    ],
+    description: "VAT reporting across multiple countries and currencies from a single Business Central legal entity. Full OSS support for European markets.",
+    longDescription: "Multi-VAT removes the complexity of cross-border VAT compliance for companies registered in multiple countries. Operating entirely within Business Central, it calculates and reports VAT to each relevant tax authority in any currency — regardless of your base currency or the original transaction currency — all from one legal entity.",
+    features: [
+      "Report VAT across multiple countries and currencies from a single BC legal entity.",
+      "Supports OSS (One Stop Shop) VAT reporting for European countries with a single VAT Statement to handle and post.",
+      "Automatically calculates and reports Sales and Purchase transactions to the relevant tax offices in any currency.",
+      "No dependency on base currency — handles multi-currency transactions natively.",
+      "Supports Essentials and Premium Editions across 18 countries including all major EU markets, UK, and US."
+    ],
+    icon: <Receipt className="w-8 h-8 text-white" />,
+    color: "from-violet-500 to-indigo-500"
   }
 ];
 
@@ -130,24 +170,44 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
         </div>
       </AnimatedSection>
 
-      {/* 2. Grid Section — 5 products: 2 top row, 3 bottom row */}
-      <div className="mb-8 relative z-10">
-        {/* Top row — 2 products centred */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-8">
-          {products.slice(0, 2).map((product, index) => (
-            <AnimatedSection key={product.id} delay={index * 100}>
-              <ProductCard product={product} onSelect={setSelectedProduct} />
-            </AnimatedSection>
-          ))}
-        </div>
-        {/* Bottom row — 3 products */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.slice(2).map((product, index) => (
-            <AnimatedSection key={product.id} delay={(index + 2) * 100}>
-              <ProductCard product={product} onSelect={setSelectedProduct} />
-            </AnimatedSection>
-          ))}
-        </div>
+      {/* 2. Grid Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mb-8 relative z-10">
+        {products.map((product, index) => (
+          <AnimatedSection key={product.id} delay={index * 100}>
+            <div 
+              onClick={() => { window.scrollTo(0, 0); setTimeout(() => setSelectedProduct(product), 50); }}
+              className="group flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-pointer active:scale-[0.98]"
+            >
+               <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
+               
+               <div className="flex flex-row flex-nowrap items-center justify-center gap-2 mb-6 overflow-hidden">
+                 {product.compatibility.map((erp) => (
+                   <span key={erp.name} className={`flex items-center whitespace-nowrap gap-1 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-tighter rounded-md border ${erp.color}`}>
+                     {erp.icon} {erp.name}
+                   </span>
+                 ))}
+               </div>
+
+               <div className="flex items-center space-x-4 mb-6">
+                 <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+                   {product.icon}
+                 </div>
+                 <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">
+                   {product.title}
+                 </h3>
+               </div>
+               
+               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                 {product.description}
+               </p>
+
+               <div className="mt-auto flex items-center text-primary-600 dark:text-primary-400 font-bold text-sm uppercase tracking-widest">
+                 <span>Learn more</span>
+                 <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
+               </div>
+            </div>
+          </AnimatedSection>
+        ))}
       </div>
 
       {/* 3. BOOK DEMO BUTTON */}
@@ -255,42 +315,6 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
     </div>
   );
 };
-
-// Extracted product card component to keep the grid sections DRY
-const ProductCard = ({ product, onSelect }: { product: any; onSelect: (p: any) => void }) => (
-  <div 
-    onClick={() => { window.scrollTo(0, 0); setTimeout(() => onSelect(product), 50); }}
-    className="group flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-pointer active:scale-[0.98]"
-  >
-    <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
-    
-    <div className="flex flex-row flex-nowrap items-center justify-center gap-2 mb-6 overflow-hidden">
-      {product.compatibility.map((erp: any) => (
-        <span key={erp.name} className={`flex items-center whitespace-nowrap gap-1 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-tighter rounded-md border ${erp.color}`}>
-          {erp.icon} {erp.name}
-        </span>
-      ))}
-    </div>
-
-    <div className="flex items-center space-x-4 mb-6">
-      <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
-        {product.icon}
-      </div>
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">
-        {product.title}
-      </h3>
-    </div>
-    
-    <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-      {product.description}
-    </p>
-
-    <div className="mt-auto flex items-center text-primary-600 dark:text-primary-400 font-bold text-sm uppercase tracking-widest">
-      <span>Learn more</span>
-      <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
-    </div>
-  </div>
-);
 
 const Benefit = ({ icon, title, text }: { icon: React.ReactNode, title: string, text: string }) => (
   <div className="flex flex-col space-y-2 text-left">
