@@ -3,7 +3,7 @@ import { AnimatedSection } from '../components/AnimatedSection';
 import { 
   CreditCard, Settings, ShoppingCart, X, CheckCircle2, ArrowRight,
   Zap, Target, Eye, Rocket, ShieldAlert, BarChart3, Database, Building2, Calendar, Globe,
-  Gift, Receipt, Monitor
+  Gift, Receipt, Monitor, FileWarning
 } from 'lucide-react';
 import { PageView } from '../types';
 
@@ -109,13 +109,13 @@ const products = [
     color: "from-rose-500 to-pink-500"
   },
   {
-    id: 7,
+    id: 6,
     title: "Terminal Connect",
     compatibility: [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
     ],
     description: "Initiate payments from a BC Sales Order directly to a physical payment terminal. Real-time transaction sync, refunds, and automatic order matching — no manual entry required.",
-    longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Order, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale. Compatible with any PSP and any terminal hardware.",
+    longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Order, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale.",
     features: [
       "One-click payment initiation from any BC Sales Order direct to a physical payment terminal.",
       "Real-time transaction response received back into BC — approved, declined, or cancelled.",
@@ -131,7 +131,7 @@ const products = [
     color: "from-cyan-500 to-blue-600"
   },
   {
-    id: 6,
+    id: 7,
     title: "Multi-VAT",
     compatibility: [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
@@ -147,16 +147,77 @@ const products = [
     ],
     icon: <Receipt className="w-8 h-8 text-white" />,
     color: "from-violet-500 to-indigo-500"
+  },
+  {
+    id: 8,
+    title: "PS Inkasso Connect",
+    compatibility: [
+      { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
+    ],
+    description: "Automate debt collection in Business Central. Send unpaid invoices and track updates — no file exports or middleware required.",
+    longDescription: "PS Inkasso Connect enables a seamless, real-time integration between Microsoft Dynamics 365 Business Central and PS Inkasso's services. Finance teams can submit cases, track updates, and receive payments — all without leaving Business Central. No middleware, no manual exports, no chasing external reports.",
+    features: [
+      "One-Click Submission: Send unpaid invoices directly from the customer ledger to PS Inkasso using integrated actions.",
+      "Live Case Status Updates: View real-time case status, suggestions, payment info, and close dates directly in Business Central.",
+      "Automated Payment Posting: Payments and credit memos from PS Inkasso are posted automatically in BC, marked for follow-up.",
+      "Full Reminder & Collection Workflow: Supports invoice service, payment reminders, and debt collection directly via PS Inkasso.",
+      "Fakturaservice Support: Let PS Inkasso send invoices — with confirmation and links logged in Business Central.",
+      "Data Compliance: Only relevant invoice and customer data is shared (e.g. due date, amounts, interest, and contact info).",
+      "No Middleware Required: Everything runs inside Business Central using standard setup and secure web service communication.",
+      "Currency Account Support: Supports separate journals per currency for accurate reconciliation of incoming payments."
+    ],
+    icon: <FileWarning className="w-8 h-8 text-white" />,
+    color: "from-red-500 to-rose-600"
   }
 ];
+
+// Reusable card component
+const ProductCard = ({ product, onSelect }: { product: any; onSelect: (p: any) => void }) => (
+  <div
+    onClick={() => { window.scrollTo(0, 0); setTimeout(() => onSelect(product), 50); }}
+    className="group flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-pointer active:scale-[0.98]"
+  >
+    <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
+
+    <div className="flex flex-row flex-nowrap items-center justify-center gap-2 mb-6 overflow-hidden">
+      {product.compatibility.map((erp: any) => (
+        <span key={erp.name} className={`flex items-center whitespace-nowrap gap-1 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-tighter rounded-md border ${erp.color}`}>
+          {erp.icon} {erp.name}
+        </span>
+      ))}
+    </div>
+
+    <div className="flex items-center space-x-4 mb-6">
+      <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
+        {product.icon}
+      </div>
+      <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">
+        {product.title}
+      </h3>
+    </div>
+
+    <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+      {product.description}
+    </p>
+
+    <div className="mt-auto flex items-center text-primary-600 dark:text-primary-400 font-bold text-sm uppercase tracking-widest">
+      <span>Learn more</span>
+      <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
+    </div>
+  </div>
+);
 
 export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
+  const row1 = products.slice(0, 3);  // 1–3
+  const row2 = products.slice(3, 6);  // 4–6
+  const row3 = products.slice(6, 8);  // 7–8 centred
+
   return (
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-0 min-h-screen">
-      
-      {/* 1. Header Section */}
+
+      {/* 1. Header */}
       <AnimatedSection>
         <div className="text-center max-w-4xl mx-auto mb-20">
           <h1 className="leading-tight tracking-tight mb-8">
@@ -170,51 +231,43 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
         </div>
       </AnimatedSection>
 
-      {/* 2. Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mb-8 relative z-10">
-        {products.map((product, index) => (
-          <AnimatedSection key={product.id} delay={index * 100}>
-            <div 
-              onClick={() => { window.scrollTo(0, 0); setTimeout(() => setSelectedProduct(product), 50); }}
-              className="group flex flex-col h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden cursor-pointer active:scale-[0.98]"
-            >
-               <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
-               
-               <div className="flex flex-row flex-nowrap items-center justify-center gap-2 mb-6 overflow-hidden">
-                 {product.compatibility.map((erp) => (
-                   <span key={erp.name} className={`flex items-center whitespace-nowrap gap-1 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-tighter rounded-md border ${erp.color}`}>
-                     {erp.icon} {erp.name}
-                   </span>
-                 ))}
-               </div>
+      {/* 2. Grid — 3 + 3 + 2 centred */}
+      <div className="mb-8 relative z-10 space-y-8">
 
-               <div className="flex items-center space-x-4 mb-6">
-                 <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
-                   {product.icon}
-                 </div>
-                 <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">
-                   {product.title}
-                 </h3>
-               </div>
-               
-               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                 {product.description}
-               </p>
+        {/* Row 1 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {row1.map((product, index) => (
+            <AnimatedSection key={product.id} delay={index * 100}>
+              <ProductCard product={product} onSelect={setSelectedProduct} />
+            </AnimatedSection>
+          ))}
+        </div>
 
-               <div className="mt-auto flex items-center text-primary-600 dark:text-primary-400 font-bold text-sm uppercase tracking-widest">
-                 <span>Learn more</span>
-                 <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
-               </div>
-            </div>
-          </AnimatedSection>
-        ))}
+        {/* Row 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {row2.map((product, index) => (
+            <AnimatedSection key={product.id} delay={index * 100}>
+              <ProductCard product={product} onSelect={setSelectedProduct} />
+            </AnimatedSection>
+          ))}
+        </div>
+
+        {/* Row 3 — 2 cards centred at 2/3 width */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:w-2/3 lg:mx-auto">
+          {row3.map((product, index) => (
+            <AnimatedSection key={product.id} delay={index * 100}>
+              <ProductCard product={product} onSelect={setSelectedProduct} />
+            </AnimatedSection>
+          ))}
+        </div>
+
       </div>
 
-      {/* 3. BOOK DEMO BUTTON */}
+      {/* 3. Book Demo */}
       <AnimatedSection delay={200}>
         <div className="flex flex-col items-center justify-center mb-8">
-          <button 
-            onClick={() => onNavigate(PageView.CONTACT)} 
+          <button
+            onClick={() => onNavigate(PageView.CONTACT)}
             className="w-full sm:w-auto px-10 py-5 bg-primary-600 hover:bg-primary-500 text-white rounded-full font-bold text-xl shadow-lg transition-all hover:scale-105 flex items-center justify-center space-x-2 group"
           >
             <Calendar className="w-6 h-6 mr-1" />
@@ -232,8 +285,8 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
         <div className="relative rounded-[3rem] overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-0">
           <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-5/12 h-[300px] lg:h-auto relative">
-              <img 
-                src="https://res.cloudinary.com/dut2qdf5z/image/upload/v1768656393/Gemini_Generated_Image_q91lskq91lskq91l_jqu7jp.png" 
+              <img
+                src="https://res.cloudinary.com/dut2qdf5z/image/upload/v1768656393/Gemini_Generated_Image_q91lskq91lskq91l_jqu7jp.png"
                 alt="Finance Automation"
                 className="w-full h-full object-cover"
               />
@@ -244,7 +297,7 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-8 uppercase tracking-tight">
                 Order to Reconciliation <span className="text-primary-600 dark:text-primary-400">Automation</span>
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
                 <Benefit icon={<Zap className="text-primary-500" />} title="Productivity" text="Process high volumes of transactions automatically and frees up key resource for high-value tasks." />
                 <Benefit icon={<Target className="text-emerald-500" />} title="Accuracy" text="Less manual input means less errors." />
@@ -258,7 +311,7 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
         </div>
       </AnimatedSection>
 
-      {/* 5. Modal Overlay */}
+      {/* 5. Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 z-[99999] flex items-start justify-center p-4 pt-6 overflow-y-auto">
           <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onClick={() => setSelectedProduct(null)}></div>
@@ -266,7 +319,7 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
             <button onClick={() => setSelectedProduct(null)} className="absolute top-6 right-6 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white z-20 transition-colors">
               <X className="w-6 h-6" />
             </button>
-            <div className="p-8 md:p-12"> 
+            <div className="p-8 md:p-12">
               <div className="flex flex-row flex-nowrap items-center justify-center gap-2 mb-4">
                 {selectedProduct.compatibility.map((erp: any) => (
                   <span key={erp.name} className={`flex items-center whitespace-nowrap gap-1.5 px-3 py-1 text-xs font-bold rounded-full border ${erp.color}`}>
@@ -279,8 +332,8 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed text-left">
                 {selectedProduct.longDescription}
               </p>
-              
-              <div className="space-y-4 mb-10 text-left"> 
+
+              <div className="space-y-4 mb-10 text-left">
                 <p className="font-bold text-xs uppercase tracking-[0.2em] text-slate-400">Key Capabilities</p>
                 {selectedProduct.features?.map((f: string, i: number) => (
                   <div key={i} className="flex items-start space-x-3 text-slate-700 dark:text-slate-300 font-medium">
@@ -289,20 +342,17 @@ export const Products: React.FC<ProductsProps> = ({ onNavigate }) => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={() => {
-                    setSelectedProduct(null);
-                    onNavigate(PageView.CONTACT);
-                  }}
+                <button
+                  onClick={() => { setSelectedProduct(null); onNavigate(PageView.CONTACT); }}
                   className="flex-1 py-4 bg-primary-600 text-white rounded-2xl font-bold shadow-lg hover:bg-primary-500 flex items-center justify-center space-x-2 transition-all active:scale-95"
                 >
-                  <Calendar className="w-4 h-4" /> 
+                  <Calendar className="w-4 h-4" />
                   <span>Book Demo</span>
                 </button>
-                <button 
-                  onClick={() => setSelectedProduct(null)} 
+                <button
+                  onClick={() => setSelectedProduct(null)}
                   className="flex-1 py-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-2xl font-bold transition-all hover:bg-slate-200 dark:hover:bg-slate-700"
                 >
                   Close Details
