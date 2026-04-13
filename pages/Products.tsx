@@ -19,14 +19,13 @@ const products = [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" },
       { name: "F&O", icon: <Building2 className="w-3 h-3" />, color: "bg-purple-50 text-purple-600 border-purple-200 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-800" }
     ],
-    description: "Captures orders from multiple channels (e-commerce, POS, or manual entry) and automatically routes them into the ERP.",
+    description: "Captures Refunds/Sales transactions from multiple channels (e-commerce, POS, or manual entry).",
     longDescription: "Our Order-to-Cash module streamlines the front-end of your financial operations. By syncing digital storefronts directly with Business Central or F&O, it ensures that sales data is accurate and inventory levels are updated in real-time.",
     features: [
       "Create, update, cancel, refund and capture Sales Orders",
       "Manages transactions originating from ecommerce sites, in-store POS purchases, and recurring subscriptions.",
       "Processes orders with multiple Payment Types (e.g., Klarna, Swish, Gift Card) associated with a single order.",
-      "Sends Payment Links/Requests from BC via SMS, Email and Mobile Pay to customers for Prepayments and Deposits.",
-      "Facilitates integrated Debt Collection (Inkasso)."
+      "Sends Payment Links/Requests from BC via SMS, Email and Mobile Pay to customers for Prepayments and Deposits."
     ],
     icon: <CreditCard className="w-8 h-8 text-white" />,
     color: "from-blue-500 to-cyan-500"
@@ -41,7 +40,7 @@ const products = [
     description: "Enterprise-grade payment integration for ERPs. Automated matching of PSP Settlements files with Customer Invoices.",
     longDescription: "The Reconciliation module is designed for complex finance teams. It pulls settlement data from 50+ PSPs and automatically matches bank payouts to outstanding customer invoices, handling bank fees and FX gains/losses along the way.",
     features: [
-      "Auto-Import: Automatically fetches and imports Payment Service Provider (PSP) settlement files directly into Business Central.",
+      "Auto-Import: Automatically fetches and imports Payment Service Provider (PSP) settlement files directly into Business Central and F&O.",
       "Auto-Matching: Payments are automatically matched against the corresponding Sales transactions (e.g., Sales Orders or Invoices).",
       "Exception Handling: Unmatched Payments are automatically identified and can be processed separately or saved for manual processing at a later date.",
       "Automated Fee Handling: Fees, Commissions, and associated VAT are automatically calculated, separated, and posted during reconciliation."
@@ -55,11 +54,11 @@ const products = [
     compatibility: [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
     ],
-    description: "Full order management automation. Create, update, sync orders, shipments, and inventory to BC. PSP Connect integration.",
+    description: "Automate Order Management with a Lightweight, External Customer Service Portal linked directly to Business Central. Create, update, sync orders, shipments, and inventory to BC. PSP Connect integration.",
     longDescription: "Order Connect acts as the intelligent bridge specifically for Business Central users. It handles the bi-directional flow of data between your shipping carriers, e-commerce platforms, and your ERP core.",
     features: [
       "100% BC Integration: Seamlessly syncs with Microsoft Dynamics 365 Business Central; all actions are immediately reflected in BC.",
-      "Real-Time, Secure Data: Streams live data directly from BC; no customer or order data is ever stored outside the source system.",
+      "Real-Time, Secure Data: Displays live data directly from BC; no customer or order data is ever stored outside the source system.",
       "Comprehensive Document Management: Manage lifecycle for Sales Orders, Return Orders, Credit Memos, Invoices, and Quotes.",
       "PSP Connect Integration: Capture Payments, Release Authorization, Refund, and Send Paylinks directly from the order screen.",
       "Dynamic Document Overview: Instant access to streamed documents with powerful Search and Advanced Filtering across all fields.",
@@ -97,13 +96,13 @@ const products = [
     description: "End-to-end Gift Card management for Business Central. Integrates multiple providers including AwardIT/Retain24 and Gifted.",
     longDescription: "Gift Card Connect bridges Business Central with leading Gift Card Service Providers, delivering a fully automated Order-to-Cash experience. Whether transactions originate online or in-store, the app handles the full gift card lifecycle — from activation through redemption — with smart refund prioritisation when used alongside PSP Connect.",
     features: [
-      "Create, update, cancel, activate and redeem gift cards directly from within Business Central.",
+      "Create, update, cancel, activate and refund gift cards directly from within Business Central.",
       "Handles gift card transactions from ecommerce sites as well as in-store POS purchases.",
       "Supports multiple gift card payments on a single Sales Order, as full or partial payment.",
       "Works in tandem with PSP Connect to let users prioritise refund order across payment methods (e.g. refund gift card before PSP).",
-      "Connects to multiple Gift Card Providers including AwardIT/Retain24 and Gifted.",
+      "Connects to multiple Gift Card Providers including AwardIT/Retain24.",
       "Quick and easy Assisted Wizard setup.",
-      "Supports Essentials and Premium Editions across 25+ countries."
+      "Utilize a giftcard from Business Central to compensate customers."
     ],
     icon: <Gift className="w-8 h-8 text-white" />,
     color: "from-rose-500 to-pink-500"
@@ -115,7 +114,7 @@ const products = [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
     ],
     description: "Initiate payments from a BC Sales Order directly to a physical payment terminal. Real-time transaction sync, refunds, and automatic order matching — no manual entry required.",
-    longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Order, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale.",
+    longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Document, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale.",
     features: [
       "One-click payment initiation from any BC Sales Order direct to a physical payment terminal.",
       "Real-time transaction response received back into BC — approved, declined, or cancelled.",
@@ -150,21 +149,20 @@ const products = [
   },
   {
     id: 8,
-    title: "PS Inkasso Connect",
+    title: "Debt Collect (Inkasso)",
     compatibility: [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
     ],
     description: "Automate debt collection in Business Central. Send unpaid invoices and track updates — no file exports or middleware required.",
-    longDescription: "PS Inkasso Connect enables a seamless, real-time integration between Microsoft Dynamics 365 Business Central and PS Inkasso's services. Finance teams can submit cases, track updates, and receive payments — all without leaving Business Central. No middleware, no manual exports, no chasing external reports.",
+    longDescription: "Debt Collect (Inkasso) enables a seamless, real-time integration between Microsoft Dynamics 365 Business Central and Debt Collect (Inkasso)'s services. Finance teams can submit cases, track updates, and receive payments — all without leaving Business Central. No middleware, no manual exports, no chasing external reports.",
     features: [
-      "One-Click Submission: Send unpaid invoices directly from the customer ledger to PS Inkasso using integrated actions.",
+      "One-Click Submission: Send unpaid invoices directly from the customer ledger to Debt Collect (Inkasso) using integrated actions.",
       "Live Case Status Updates: View real-time case status, suggestions, payment info, and close dates directly in Business Central.",
-      "Automated Payment Posting: Payments and credit memos from PS Inkasso are posted automatically in BC, marked for follow-up.",
-      "Full Reminder & Collection Workflow: Supports invoice service, payment reminders, and debt collection directly via PS Inkasso.",
-      "Fakturaservice Support: Let PS Inkasso send invoices — with confirmation and links logged in Business Central.",
-      "Data Compliance: Only relevant invoice and customer data is shared (e.g. due date, amounts, interest, and contact info).",
+      "Automated Payment Posting: Payments and credit memos from Debt Collect (Inkasso) are posted automatically in BC, marked for follow-up.",
+      "Full Reminder & Collection Workflow: Supports invoice service, payment reminders, and debt collection directly via Debt Collect (Inkasso).",
+      "Fakturaservice Support: Let Debt Collect (Inkasso) send invoices — with confirmation and links logged in Business Central.",
       "No Middleware Required: Everything runs inside Business Central using standard setup and secure web service communication.",
-      "Currency Account Support: Supports separate journals per currency for accurate reconciliation of incoming payments."
+      "Auto import payment files, reconcile and book interest fees in BC."
     ],
     icon: <FileWarning className="w-8 h-8 text-white" />,
     color: "from-red-500 to-rose-600"
