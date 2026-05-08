@@ -113,7 +113,7 @@ const products = [
     compatibility: [
       { name: "BC", icon: <Database className="w-3 h-3" />, color: "bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800" }
     ],
-    description: "Initiate payments from a BC Sales Order directly to a physical payment terminal. Real-time transaction sync, refunds, and automatic order matching — no manual entry required.",
+    description: "Initiate payments from BC directly to a physical payment terminal. Real-time transaction sync, refunds, and automatic payment matching — no manual entry required.",
     longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Document, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale.",
     features: [
       "One-click payment initiation from any BC Sales Order direct to a physical payment terminal.",
