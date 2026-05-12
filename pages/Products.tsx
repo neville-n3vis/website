@@ -116,7 +116,7 @@ const products = [
     description: "Initiate payments from BC directly to a physical payment terminal. Real-time transaction sync, refunds, and automatic payment matching — no manual entry required.",
     longDescription: "Terminal Connect closes the gap between your physical point-of-sale and Business Central. With a single click from any Sales Document, the payment request is sent directly to a connected payment terminal via your PSP. Once the customer pays, the transaction result is returned automatically to BC and matched against the originating order — eliminating manual reconciliation and reducing errors at the point of sale.",
     features: [
-      "One-click payment initiation from any BC Sales Order direct to a physical payment terminal.",
+      "One-click payment initiation from BC direct to a physical payment terminal.",
       "Real-time transaction response received back into BC — approved, declined, or cancelled.",
       "Automatic linking of the terminal payment to the originating Sales Order or Invoice in BC.",
       "Refund handling initiated from within BC and executed directly on the terminal.",
