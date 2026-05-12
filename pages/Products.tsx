@@ -118,7 +118,7 @@ const products = [
     features: [
       "One-click payment initiation from BC direct to a physical payment terminal.",
       "Real-time transaction response received back into BC — approved, declined, or cancelled.",
-      "Automatic linking of the terminal payment to the originating Sales Order or Invoice in BC.",
+      "Automatic linking of the terminal payment directly to BC.",
       "Refund handling initiated from within BC and executed directly on the terminal.",
       "Works through your existing PSP connection — no additional payment contracts required.",
       "Supports split and partial payments across terminal and other payment methods.",
